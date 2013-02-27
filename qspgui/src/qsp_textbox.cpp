@@ -44,9 +44,40 @@ void QspTextBox::SetText(QString text)
 
 void QspTextBox::LoadBackImage(QString filename)
 {
-	QPalette palette = this->palette();
-	palette.setBrush(QPalette::Base, QBrush(QPixmap(filename))); 
-	setPalette(palette); 
+	if (QFile::exists(filename))
+	{
+		SetBackgroundImage(QPixmap(filename));
+		return;
+	}
+	SetBackgroundImage(QPixmap());
+}
+
+void QspTextBox::SetBackgroundImage(QPixmap pic)
+{
+	_mPic = pic;
+	CalcImageSize();
+}
+
+void QspTextBox::CalcImageSize()
+{
+	if (!_mPic.isNull())
+	{
+		int w, h;
+		w = this->childrenRect().width();
+		h = this->childrenRect().height();
+		if (w < 1) w = 1;
+		if (h < 1) h = 1;
+		int srcW = _mPic.width(), srcH = _mPic.height();
+		int destW = srcW * h / srcH, destH = srcH * w / srcW;
+		if (destW > w)
+			destW = w;
+		else
+			destH = h;
+		m_posX = (w - destW) / 2;
+		m_posY = (h - destH) / 2;
+		if (destW > 0 && destH > 0)
+			m_bmpRealBg = _mPic.scaled(destW, destH);
+	}
 }
 
 void QspTextBox::mouseMoveEvent(QMouseEvent* e)
@@ -73,6 +104,26 @@ void QspTextBox::mousePressEvent(QMouseEvent *e)
 	{
 		emit LinkClicked(anchorAt(p));
 	}
+}
+
+void QspTextBox::paintEvent(QPaintEvent *e)
+{
+	if (!_mPic.isNull())
+	{
+		QPainter painter(viewport());
+		painter.drawImage(m_posX, m_posY, *(new QImage(m_bmpRealBg.toImage())));
+	}
+
+	QTextEdit::paintEvent(e);
+}
+
+void QspTextBox::resizeEvent(QResizeEvent *e)
+{
+	if (!_mPic.isNull())
+	{
+		CalcImageSize();
+	}
+	QTextEdit::resizeEvent(e);
 }
 
 } // namespace Ui

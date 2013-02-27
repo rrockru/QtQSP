@@ -7,7 +7,7 @@ namespace Ui
 QspListBox::QspListBox( QWidget* parent ) :
 	QListWidget(parent)
 {
-	//setItemDelegate(new QspListItemDelegate);
+	setItemDelegate(new QspListItemDelegate);
 	viewport()->setMouseTracking(true);
 	QPalette pal = palette();
 	pal.setColor(QPalette::Inactive, QPalette::Highlight, pal.color(QPalette::Active, QPalette::Highlight));

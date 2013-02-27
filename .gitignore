@@ -11,13 +11,13 @@
 
 # Ignore some pjoject files.
 /win32_vs.sdf
+/win32_vs.opensdf
 /win32_vs.suo
 
 # Ignore debug files.
 /qspgui/memwatch.log
 
 # Ignore machine-specific files.
-/qspgui/qspgui.vcxproj.filters
 /qspgui/qspgui.vcxproj.user
 
 

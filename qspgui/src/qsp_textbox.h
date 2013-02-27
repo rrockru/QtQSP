@@ -19,12 +19,19 @@ public:
 protected:
 	void mouseMoveEvent(QMouseEvent* e);
 	void mousePressEvent(QMouseEvent *e);
+	void paintEvent(QPaintEvent *e);
+	void resizeEvent(QResizeEvent *e);
 
 private:
 	QVariant loadResource(int type, const QUrl &name);
+	void SetBackgroundImage(QPixmap pic);
+	void CalcImageSize();
 
 	QUrl srcUrl;
 	bool m_isHtml;
+	QPixmap _mPic;
+	QPixmap m_bmpRealBg;
+	int m_posX, m_posY;
 
 signals: 
 	void LinkClicked(QString);

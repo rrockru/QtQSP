@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="generated\qrc_main_window.cpp">
+      <Filter>Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\Release\moc_main_window.cpp">
+      <Filter>Generated\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\Debug\moc_main_window.cpp">
+      <Filter>Generated\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\Release\moc_qsp_inputdlg.cpp">
+      <Filter>Generated\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\Debug\moc_qsp_inputdlg.cpp">
+      <Filter>Generated\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\Debug\moc_qsp_textbox.cpp">
+      <Filter>Generated\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\Release\moc_qsp_textbox.cpp">
+      <Filter>Generated\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\callbacks_gui.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main_window.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qsp_imgcanvas.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qsp_inputbox.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qsp_inputdlg.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qsp_listbox.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qsp_listitemdelegate.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qsp_textbox.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qsp_tools.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\callbacks_gui.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stdafx.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp_default.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp_imgcanvas.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp_inputbox.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp_inputdlg.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp_listbox.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp_listitemdelegate.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp_textbox.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp_tools.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="misc\main_window.qrc">
+      <Filter>Misc</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\main_window.h">
+      <Filter>Include</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Generated">
+      <UniqueIdentifier>{f146191e-c6b2-478a-8269-e54fb6988f87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated\Debug">
+      <UniqueIdentifier>{09b44b21-2f3c-4ed2-8de9-76109dc97924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated\Release">
+      <UniqueIdentifier>{5c64d54a-3996-4c03-aeb7-4e4d2c402678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{4b41334c-f8a3-43d4-98aa-ae9784346c85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc\win32">
+      <UniqueIdentifier>{32e379ac-6c71-4191-8f46-f9b9c88554f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{112426c8-22ae-4f9b-afab-18abfc9e93a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{e6f6617b-82dc-41e0-a25f-4671d2c15d61}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="misc\win32\resource.rc">
+      <Filter>Misc\win32</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
