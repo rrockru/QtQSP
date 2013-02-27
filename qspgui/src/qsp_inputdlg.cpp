@@ -10,7 +10,8 @@ namespace Ui
 		QColor foreCol,
 		QFont font,
 		bool isHtml, 
-		QUrl gamePath) 
+		QUrl gamePath) :
+		QDialog()
 	{
 		QVBoxLayout *mainLayout = new QVBoxLayout;
 		QVBoxLayout *box = new QVBoxLayout();
@@ -23,24 +24,20 @@ namespace Ui
 		tmpPal.setColor(QPalette::Foreground, foreCol);
 		_desc->setPalette(tmpPal);
 		_desc->setFont(font);
-		QLineEdit *inputStr = new QLineEdit;
-		inputStr->setPalette(tmpPal);
-		inputStr->setFont(font);
+		_text = new QLineEdit;
+		_text->setPalette(tmpPal);
+		_text->setFont(font);
 
-		QHBoxLayout *buttonBox = new QHBoxLayout;
-		QPushButton *okButton = new QPushButton("OK");
-		okButton->setPalette(tmpPal);
-		okButton->setFont(font);
-		QPushButton *cancelButton = new QPushButton("Cancel");
-		cancelButton->setPalette(tmpPal);
-		cancelButton->setFont(font);
-		buttonBox->addWidget(okButton);
-		buttonBox->addWidget(cancelButton);
+		QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok
+			| QDialogButtonBox::Cancel);
+
+		connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+		connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
 		box->addWidget(_desc);
-		box->addWidget((QWidget *)inputStr);
+		box->addWidget((QWidget *)_text);
 		setLayout(mainLayout);
 		mainLayout->addLayout(box);
-		mainLayout->addLayout(buttonBox);
+		mainLayout->addWidget(buttonBox);
 		setFixedSize(_desc->sizeHint().width(), _desc->sizeHint().height());
 
 		static const int minWidth = 420;
@@ -51,7 +48,7 @@ namespace Ui
 		setMinimumSize(minWidth, minHeight);
 		setMaximumSize(maxWidth, maxHeight);
 
-		inputStr->setFocus();
+		_text->setFocus();
 
 	}
 

@@ -17,10 +17,11 @@ namespace Ui
 			bool isHtml,
 			QUrl gamePath);
 
-		QString GetText() { return _text; }
+		QString GetText() { return _text->text(); }
 
 	private:
-		QString _text;
+		QLineEdit *_text;
+
 	};
 } // namespace Ui
 

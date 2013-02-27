@@ -128,6 +128,11 @@ namespace Ui
 			m_isHtml,
 			m_gameUrl);
 		dlg->exec();
+#ifdef _UNICODE
+		wcsncpy(buffer, dlg->GetText().toStdWString().c_str(), maxLen);
+#else
+		strncpy(buffer, dlg->GetText().toStdString().c_str(), maxLen);
+#endif
 	}
 
 } // namespace Ui

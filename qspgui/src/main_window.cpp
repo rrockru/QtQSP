@@ -42,13 +42,13 @@ void MainWindow::LoadSettings()
 
 		QByteArray state = QByteArray::fromRawData(defState, sizeof(defState));
 
-		setGeometry(settings.value("General/Geometry", _defRect).toRect());
-		restoreState(settings.value("General/WindowState", state).toByteArray());
+		setGeometry(settings.value("Geometry", _defRect).toRect());
+		restoreState(settings.value("WindowState", state).toByteArray());
 
-		if (settings.value("General/IsMaximized", 0).toBool())
+		if (settings.value("IsMaximized", 0).toBool())
 			showMaximized();
 
-		_lastPath = settings.value("General/LastPath", "").toString();
+		_lastPath = settings.value("LastPath", "").toString();
 		QString panels = QString("layout2|") +
 			"name=imgview;state=1080035327;dir=1;layer=0;row=0;pos=0;prop=100000;bestw=832;besth=150;minw=50;minh=50;maxw=-1;maxh=-1;floatx=175;floaty=148;floatw=518;floath=372|" +
 			"name=desc;state=768;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=613;besth=341;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|" +
@@ -57,7 +57,7 @@ void MainWindow::LoadSettings()
 			"name=vars;state=6293500;dir=3;layer=0;row=0;pos=1;prop=82651;bestw=351;besth=185;minw=50;minh=50;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|" +
 			"name=input;state=2099196;dir=3;layer=1;row=0;pos=0;prop=100000;bestw=832;besth=22;minw=50;minh=20;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|" +
 			"dock_size(5,0,0)=22|dock_size(2,0,0)=215|dock_size(3,0,0)=204|dock_size(3,1,0)=41|";
-		_panels = settings.value("General/Panels", panels).toString();
+		_panels = settings.value("Panels", panels).toString();
 
 		_fontName = settings.value("Font/FontName", QApplication::font().family()).toString();
 		_fontSize = settings.value("Font/FontSize", QApplication::font().pointSize()).toInt();
