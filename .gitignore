@@ -19,5 +19,4 @@
 
 # Ignore machine-specific files.
 /qspgui/qspgui.vcxproj.user
-
-
+/qsp/win32_qsp.vcxproj.user

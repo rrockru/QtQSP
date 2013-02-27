@@ -20,24 +20,32 @@ namespace Ui
 		_desc->SetIsHtml(isHtml);
 		_desc->SetText(text);
 		QPalette tmpPal = _desc->palette();
-		tmpPal.setColor(QPalette::Background, backCol);
-		tmpPal.setColor(QPalette::Foreground, foreCol);
+		tmpPal.setColor(QPalette::Base, backCol);
+		tmpPal.setColor(QPalette::Text, foreCol);
+		setPalette(tmpPal);
 		_desc->setPalette(tmpPal);
 		_desc->setFont(font);
 		_text = new QLineEdit;
 		_text->setPalette(tmpPal);
 		_text->setFont(font);
 
-		QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok
-			| QDialogButtonBox::Cancel);
+		QHBoxLayout *buttonBox = new QHBoxLayout;
+		QPushButton *okButton = new QPushButton("OK");
+		okButton->setPalette(tmpPal);
+		okButton->setFont(font);
+		QPushButton *cancelButton = new QPushButton("Cancel");
+		cancelButton->setPalette(tmpPal);
+		cancelButton->setFont(font);
+		buttonBox->addWidget(okButton);
+		buttonBox->addWidget(cancelButton);
+		connect(okButton, SIGNAL(clicked()), this, SLOT(accept()));
+		connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
-		connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-		connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
 		box->addWidget(_desc);
 		box->addWidget((QWidget *)_text);
 		setLayout(mainLayout);
 		mainLayout->addLayout(box);
-		mainLayout->addWidget(buttonBox);
+		mainLayout->addLayout(buttonBox);
 		setFixedSize(_desc->sizeHint().width(), _desc->sizeHint().height());
 
 		static const int minWidth = 420;

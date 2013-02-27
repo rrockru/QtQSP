@@ -13,7 +13,6 @@ namespace Ui
 		m_window = window;
 
 		QSPSetCallBack(QSP_CALL_REFRESHINT, (QSP_CALLBACK)&RefreshInt);
-		QSPSetCallBack(QSP_CALL_PLAYERVERSION, (QSP_CALLBACK)&PlayerVersion);
 		QSPSetCallBack(QSP_CALL_SHOWWINDOW, (QSP_CALLBACK)&ShowPane);
 		QSPSetCallBack(QSP_CALL_INPUTBOX, (QSP_CALLBACK)&Input);
 
@@ -89,26 +88,6 @@ namespace Ui
 		}
 	}
 
-	void QSPCallBacks::PlayerVersion(const QSP_CHAR *text, QSP_CHAR *buffer, int maxLen)
-	{
-		QString parm = QString::fromWCharArray(text);
-		if(parm == "os")
-		{
-#ifdef _UNICODE
-			wcsncpy(buffer, QString("window").toStdWString().c_str(), maxLen);
-#else
-			strncpy(buffer, QString("window").toStdString().c_str(), maxLen);
-#endif
-		} else if (parm == "platform")
-		{
-#ifdef _UNICODE
-			wcsncpy(buffer, QString("classic").toStdWString().c_str(), maxLen);
-#else
-			strncpy(buffer, QString("classic").toStdString().c_str(), maxLen);
-#endif
-		}
-	}
-
 	void QSPCallBacks::UpdateGamePath()
 	{
 		QFileInfo fi(QString::fromWCharArray(QSPGetQstFullPath()));
@@ -122,8 +101,8 @@ namespace Ui
 	{
 		QspInputDlg *dlg = new QspInputDlg("Input data",
 			QString::fromWCharArray(text),
-			m_window->GetDesc()->palette().color(QPalette::Background),
-			m_window->GetDesc()->palette().color(QPalette::Foreground),
+			m_window->GetDesc()->palette().color(QPalette::Base),
+			m_window->GetDesc()->palette().color(QPalette::Text),
 			m_window->GetDesc()->font(),
 			m_isHtml,
 			m_gameUrl);

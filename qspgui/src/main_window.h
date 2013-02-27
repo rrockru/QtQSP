@@ -52,6 +52,9 @@ private:
 	void ApplyFont(QFont);
 	void ApplyFontSize(int);
 	void ApplyFontName(QString);
+	void ApplyBackColor(QColor);
+	void ApplyFontColor(QColor);
+	void ApplyLinkColor(QColor);
 
 private:
 
@@ -68,6 +71,9 @@ private:
 	QDockWidget*	_actionsWidget;
 	QDockWidget*	_descWidget;
 	QDockWidget*	_inputWidget;
+	QColor			_backColor;
+	QColor			_fontColor;
+	QColor			_linkColor;
 	QRect			_defRect;
 	QString			_lastPath;
 	QString			_fontName;
@@ -76,6 +82,7 @@ private:
 	QString			_panels;
 	bool			_isUseFontSize;
 	int				_fontSize;
+	
 
 private slots:
 	void OnOpenGame();

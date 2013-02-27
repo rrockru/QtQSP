@@ -62,6 +62,18 @@ void MainWindow::LoadSettings()
 		_fontName = settings.value("Font/FontName", QApplication::font().family()).toString();
 		_fontSize = settings.value("Font/FontSize", QApplication::font().pointSize()).toInt();
 		_isUseFontSize = settings.value("Font/UseFontSize", 0).toBool();
+
+		ApplyFontName(_fontName);
+
+		bool ok;
+
+		_backColor = QColor(settings.value("Colors/BackColor", "0xE0E0E0").toString().toInt(&ok, 16));
+		_fontColor = QColor(settings.value("Colors/FontColor", "0x000000").toString().toInt(&ok, 16));
+		_linkColor = QColor(settings.value("Colors/LinkColor", "0xFF0000").toString().toInt(&ok, 16));
+
+		ApplyBackColor(_backColor);
+		ApplyFontColor(_fontColor);
+		ApplyLinkColor(_linkColor);
 		
 	//}
 }
@@ -84,7 +96,10 @@ void MainWindow::SaveSettings()
 	settings.setValue("Font/FontName", _fontName);
 	settings.setValue("Font/FontSize", _fontSize);
 	settings.setValue("Font/UseFontSize", _isUseFontSize);
-	ApplyFontName(_fontName);
+
+	settings.setValue("Colors/BackColor", _backColor.name().toUpper().replace("#", "0x"));
+	settings.setValue("Colors/FontColor", _fontColor.name().toUpper().replace("#", "0x"));
+	settings.setValue("Colors/LinkColor", _linkColor.name().toUpper().replace("#", "0x"));
 }
 
 void MainWindow::CreateMenuBar()
@@ -404,6 +419,37 @@ void MainWindow::ApplyFont(QFont newFont)
 	_actionsListBox->SetTextFont(newFont);
 	_descTextBox->setFont(newFont);
 	_inputTextBox->setFont(newFont);
+}
+
+void MainWindow::ApplyBackColor(QColor col)
+{
+	qDebug() << col.name();
+	QPalette p;
+	p = _mainDescTextBox->palette();
+	p.setColor(QPalette::Base, col);
+	_mainDescTextBox->setPalette(p);
+	p = _descTextBox->palette();
+	p.setColor(QPalette::Base, col);
+	_descTextBox->setPalette(p);
+	p = _objectsListBox->palette();
+	p.setColor(QPalette::Base, col);
+	_objectsListBox->setPalette(p);
+	p = _actionsListBox->palette();
+	p.setColor(QPalette::Base, col);
+	_actionsListBox->setPalette(p);
+	p = _inputTextBox->palette();
+	p.setColor(QPalette::Base, col);
+	_inputTextBox->setPalette(p);
+}
+
+void MainWindow::ApplyFontColor(QColor col)
+{
+
+}
+
+void MainWindow::ApplyLinkColor(QColor col)
+{
+
 }
 
 void MainWindow::OnLinkClicked(QString href)
