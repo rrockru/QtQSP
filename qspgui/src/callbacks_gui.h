@@ -14,6 +14,9 @@ public:
 	static void ShowPane(int type, QSP_BOOL isShow);
 	static void PlayerVersion(const QSP_CHAR *text, QSP_CHAR *buffer, int maxLen);
 	static void Input(const QSP_CHAR *text, QSP_CHAR *buffer, int maxLen);
+	static void DeleteMenu();
+	static void AddMenuItem(const QSP_CHAR *name, const QSP_CHAR *imgPath);
+	static int ShowMenu();
 private:
 	static MainWindow * m_window;
 	static QString m_gamePath;

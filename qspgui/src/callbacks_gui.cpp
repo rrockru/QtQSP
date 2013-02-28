@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "callbacks_gui.h"
 
 namespace Ui
@@ -15,6 +15,9 @@ namespace Ui
 		QSPSetCallBack(QSP_CALL_REFRESHINT, (QSP_CALLBACK)&RefreshInt);
 		QSPSetCallBack(QSP_CALL_SHOWWINDOW, (QSP_CALLBACK)&ShowPane);
 		QSPSetCallBack(QSP_CALL_INPUTBOX, (QSP_CALLBACK)&Input);
+		QSPSetCallBack(QSP_CALL_DELETEMENU, (QSP_CALLBACK)&DeleteMenu);
+		QSPSetCallBack(QSP_CALL_ADDMENUITEM, (QSP_CALLBACK)&AddMenuItem);
+		QSPSetCallBack(QSP_CALL_SHOWMENU, (QSP_CALLBACK)&ShowMenu);
 
 	}
 
@@ -112,6 +115,21 @@ namespace Ui
 #else
 		strncpy(buffer, dlg->GetText().toStdString().c_str(), maxLen);
 #endif
+	}
+
+	void QSPCallBacks::DeleteMenu()
+	{
+		m_window->DeleteMenu();
+	}
+
+	void QSPCallBacks::AddMenuItem(const QSP_CHAR *name, const QSP_CHAR *imgPath)
+	{
+		m_window->AddMenuItem(QString::fromWCharArray(name), QString::fromWCharArray(imgPath));
+	}
+
+	int QSPCallBacks::ShowMenu()
+	{
+		return m_window->ShowMenu();
 	}
 
 } // namespace Ui

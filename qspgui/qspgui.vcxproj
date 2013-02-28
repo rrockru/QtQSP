@@ -64,6 +64,23 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <PreBuildEvent>
+      <Command>%QTDIR%\bin\moc.exe src\main_window.h -o generated\Release\tmp_moc_main_window.cpp
+echo #include "stdafx.h" &gt; generated\Release\moc_main_window.cpp
+type generated\Release\tmp_moc_main_window.cpp &gt;&gt; generated\Release\moc_main_window.cpp
+del  generated\Release\tmp_moc_main_window.cpp
+%QTDIR%\bin\moc.exe src\qsp_inputdlg.h -o generated\Release\tmp_moc_qsp_inputdlg.cpp
+echo #include "stdafx.h" &gt; generated\Release\moc_qsp_inputdlg.cpp
+type generated\Release\tmp_moc_qsp_inputdlg.cpp &gt;&gt; generated\Release\moc_qsp_inputdlg.cpp
+del  generated\Release\tmp_moc_qsp_inputdlg.cpp
+%QTDIR%\bin\moc.exe src\qsp_textbox.h -o generated\Release\tmp_moc_qsp_textbox.cpp
+echo #include "stdafx.h" &gt; generated\Release\moc_qsp_textbox.cpp
+type generated\Release\tmp_moc_qsp_textbox.cpp &gt;&gt; generated\Release\moc_qsp_textbox.cpp
+del  generated\Release\tmp_moc_qsp_textbox.cpp
+
+</Command>
+      <Message>Generating mocs</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -89,6 +106,25 @@
       <Command>
       </Command>
     </CustomBuild>
+    <PreBuildEvent>
+      <Command>%QTDIR%\bin\moc.exe src\main_window.h -o generated\Debug\tmp_moc_main_window.cpp
+echo #include "stdafx.h" &gt; generated\Debug\moc_main_window.cpp
+type generated\Debug\tmp_moc_main_window.cpp &gt;&gt; generated\Debug\moc_main_window.cpp
+del  generated\Debug\tmp_moc_main_window.cpp
+%QTDIR%\bin\moc.exe src\qsp_inputdlg.h -o generated\Debug\tmp_moc_qsp_inputdlg.cpp
+echo #include "stdafx.h" &gt; generated\Debug\moc_qsp_inputdlg.cpp
+type generated\Debug\tmp_moc_qsp_inputdlg.cpp &gt;&gt; generated\Debug\moc_qsp_inputdlg.cpp
+del  generated\Debug\tmp_moc_qsp_inputdlg.cpp
+%QTDIR%\bin\moc.exe src\qsp_textbox.h -o generated\Debug\tmp_moc_qsp_textbox.cpp
+echo #include "stdafx.h" &gt; generated\Debug\moc_qsp_textbox.cpp
+type generated\Debug\tmp_moc_qsp_textbox.cpp &gt;&gt; generated\Debug\moc_qsp_textbox.cpp
+del  generated\Debug\tmp_moc_qsp_textbox.cpp
+
+</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Generating mocs</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="generated\Debug\moc_qsp_inputdlg.cpp" />

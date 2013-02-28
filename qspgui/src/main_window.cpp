@@ -21,10 +21,12 @@ MainWindow::MainWindow(QString configFile) :
 
 	_mainDescTextBox = new QspTextBox(this);
 	setCentralWidget(_mainDescTextBox);
-	connect(_mainDescTextBox, SIGNAL(LinkClicked(QString)), this, SLOT(OnLinkClicked(QString)));
+	connect(_mainDescTextBox, SIGNAL(LinkClicked(QString, QPoint)), this, SLOT(OnLinkClicked(QString, QPoint)));
 
 	CreateDockWindows();
 	CreateMenuBar();
+
+	_popupMenu = new QMenu();
 }
 
 MainWindow::~MainWindow()
@@ -479,11 +481,45 @@ void MainWindow::ApplyLinkColor(QColor col)
 
 }
 
-void MainWindow::OnLinkClicked(QString href)
+void MainWindow::OnLinkClicked(QString href, QPoint pos)
 {
+	_linkClickPos = pos;
 	if (href.toUpper().startsWith("EXEC:"))
 	{
 		if (!QSPExecString((const QSP_CHAR *)href.mid(5).toStdWString().c_str(), QSP_TRUE)) ShowError();
+	}
+}
+
+void MainWindow::DeleteMenu()
+{
+	disconnect(_popupMenu,SIGNAL(triggered(QAction*)), this, SLOT(OnMenu(QAction*)));
+	delete _popupMenu;
+	_popupMenu = new QMenu();
+}
+
+void MainWindow::AddMenuItem(QString name, QString imgPath)
+{
+	if (name == tr("-"))
+		_popupMenu->addSeparator();
+	else
+	{
+		_popupMenu->addAction(QIcon(imgPath), name);
+	}
+}
+
+int MainWindow::ShowMenu()
+{
+	connect(_popupMenu,SIGNAL(triggered(QAction*)), this, SLOT(OnMenu(QAction*)));
+	_menuIndex = -1;
+	_popupMenu->exec(_linkClickPos);
+	return _menuIndex;
+}
+
+void MainWindow::OnMenu(QAction *act)
+{
+	QList<QAction*> acts = _popupMenu->actions();
+	if (!acts.empty()) {
+		_menuIndex = acts.indexOf(act);
 	}
 }
 

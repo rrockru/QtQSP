@@ -83,7 +83,7 @@ static const uint qt_meta_data_Ui__MainWindow[] = {
       12,    0,   94,    2, 0x08,
       13,    0,   95,    2, 0x08,
       14,    0,   96,    2, 0x08,
-      15,    1,   97,    2, 0x08,
+      15,    2,   97,    2, 0x08,
 
  // slots: parameters
     QMetaType::Void,
@@ -99,7 +99,7 @@ static const uint qt_meta_data_Ui__MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::QPoint,    2,    2,
 
        0        // eod
 };
@@ -122,7 +122,7 @@ void Ui::MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 10: _t->OnActionChange(); break;
         case 11: _t->OnObjectChange(); break;
         case 12: _t->OnActionDblClick(); break;
-        case 13: _t->OnLinkClicked((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 13: _t->OnLinkClicked((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QPoint(*)>(_a[2]))); break;
         default: ;
         }
     }
