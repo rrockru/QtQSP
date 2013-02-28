@@ -278,12 +278,25 @@ void MainWindow::OnOptions()
 
 void MainWindow::OnOpenSavedGame()
 {
-
+	QFileDialog *dlg = new QFileDialog();
+	QString filename = dlg->getOpenFileName(this, NULL, _lastPath, "Saved game files (*.sav)|*.sav");
+	if (!filename.isEmpty())
+	{
+		QFileInfo fi(filename);
+		_lastPath = fi.absoluteFilePath();
+		if (!QSPOpenSavedGame(filename.toStdWString().c_str(), QSP_TRUE))
+			ShowError();
+	}
 }
 
 void MainWindow::OnSaveGame()
 {
-
+	QFileDialog *dlg = new QFileDialog();
+	QString filename = dlg->getSaveFileName(this, NULL, _lastPath, "Saved game files (*.sav)|*.sav");
+	QFileInfo fi(filename);
+	_lastPath = fi.absoluteFilePath();
+	if (!QSPSaveGame(filename.toStdWString().c_str(), QSP_TRUE))
+		ShowError();
 }
 
 void MainWindow::OnToggleCaptions()
