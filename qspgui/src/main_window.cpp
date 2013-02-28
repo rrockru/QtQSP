@@ -436,7 +436,6 @@ void MainWindow::ApplyFontName(QString fname)
 void MainWindow::ApplyFontSize(int fsize)
 {
 	QFont newFont(_mainDescTextBox->font());
-	qDebug() << fsize;
 	newFont.setPointSize(fsize);
 	ApplyFont(newFont);
 }
@@ -452,7 +451,6 @@ void MainWindow::ApplyFont(QFont newFont)
 
 void MainWindow::ApplyBackColor(QColor col)
 {
-	qDebug() << col.name();
 	QPalette p;
 	p = _mainDescTextBox->palette();
 	p.setColor(QPalette::Base, col);
