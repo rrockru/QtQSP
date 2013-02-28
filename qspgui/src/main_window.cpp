@@ -254,7 +254,21 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::OnAbout()
 {
-
+	QPixmap icon = QPixmap(":/menu/icon");
+	QString version(QString::fromWCharArray(QSPGetVersion()));
+	QString libCompiledDate(QString::fromWCharArray(QSPGetCompiledDateTime()));
+	QString guiCompiledDate(tr(__DATE__) + tr(", ") + tr(__TIME__));
+	QMessageBox dlg(QMessageBox::NoIcon, tr("About..."), tr(""), QMessageBox::Ok);
+	dlg.setIconPixmap(icon);
+	QString text = (tr("<h2>QtQsp</h2>"
+		"<p>Copyright &copy; 2013 rrockSoft."));
+	text += tr("<p>Version: %1<br/>Engine Compiled: %2<br/>GUI Compiled: %3").arg(version, libCompiledDate, guiCompiledDate);
+	text += tr("<p>Site: <a href=\"http://qsp.su\">http://qsp.su</a>");
+	text += tr("<p>Autors:<br/>"
+		"Byte [nporep@mail.ru]<br/>"
+		"rrock.ru [rrock.ru@gmail.com]<br/>");
+	dlg.setText(text);
+	dlg.exec();
 }
 
 void MainWindow::OnOptions()

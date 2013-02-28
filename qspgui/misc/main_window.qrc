@@ -7,5 +7,6 @@
         <file alias="statusopen">icons/statusopen.xpm</file>
         <file alias="statussave">icons/statussave.xpm</file>
         <file alias="windowmode">icons/windowmode.xpm</file>
-    </qresource>
+        <file alias="icon">icons/logo.ico</file>
+    </qresource>  
 </RCC>

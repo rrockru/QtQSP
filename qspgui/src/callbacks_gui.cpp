@@ -91,7 +91,7 @@ namespace Ui
 	void QSPCallBacks::UpdateGamePath()
 	{
 		QFileInfo fi(QString::fromWCharArray(QSPGetQstFullPath()));
-		m_gamePath = fi.absoluteDir().path() + "/";
+		m_gamePath = fi.absoluteDir().path() + QDir::separator();
 		m_gameUrl = QUrl::fromLocalFile(fi.absoluteFilePath());
 		m_window->GetDesc()->SetContentUrl(m_gameUrl);
 		m_window->GetVars()->SetContentUrl(m_gameUrl);
