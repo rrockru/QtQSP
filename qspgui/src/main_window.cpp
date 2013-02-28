@@ -217,7 +217,7 @@ void MainWindow::CreateDockWindows()
 	addDockWidget(Qt::BottomDockWidgetArea, _descWidget, Qt::Horizontal);
 	_descTextBox = new QspTextBox(this);
 	_descWidget->setWidget(_descTextBox);
-	connect(_descTextBox, SIGNAL(LinkClicked(QString)), this, SLOT(OnLinkClicked(QString)));
+	connect(_descTextBox, SIGNAL(LinkClicked(QString, QPoint)), this, SLOT(OnLinkClicked(QString, QPoint)));
 
 	// "Input area" widget
 	_inputWidget = new QDockWidget(tr("Input area"), this);

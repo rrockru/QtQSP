@@ -18,6 +18,7 @@ namespace Ui
 		QSPSetCallBack(QSP_CALL_DELETEMENU, (QSP_CALLBACK)&DeleteMenu);
 		QSPSetCallBack(QSP_CALL_ADDMENUITEM, (QSP_CALLBACK)&AddMenuItem);
 		QSPSetCallBack(QSP_CALL_SHOWMENU, (QSP_CALLBACK)&ShowMenu);
+		QSPSetCallBack(QSP_CALL_SHOWMSGSTR, (QSP_CALLBACK)&Msg);
 
 	}
 
@@ -130,6 +131,18 @@ namespace Ui
 	int QSPCallBacks::ShowMenu()
 	{
 		return m_window->ShowMenu();
+	}
+
+	void QSPCallBacks::Msg(const QSP_CHAR *str)
+	{
+		QSPMsgDlg *dlg = new QSPMsgDlg("Input data",
+			QString::fromWCharArray(str),
+			m_window->GetDesc()->palette().color(QPalette::Base),
+			m_window->GetDesc()->palette().color(QPalette::Text),
+			m_window->GetDesc()->font(),
+			m_isHtml,
+			m_gameUrl);
+		dlg->exec();
 	}
 
 } // namespace Ui

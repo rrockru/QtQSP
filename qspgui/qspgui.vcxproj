@@ -77,6 +77,10 @@ del  generated\Release\tmp_moc_qsp_inputdlg.cpp
 echo #include "stdafx.h" &gt; generated\Release\moc_qsp_textbox.cpp
 type generated\Release\tmp_moc_qsp_textbox.cpp &gt;&gt; generated\Release\moc_qsp_textbox.cpp
 del  generated\Release\tmp_moc_qsp_textbox.cpp
+%QTDIR%\bin\moc.exe src\qsp_msgdlg.h -o generated\Release\tmp_moc_qsp_msgdlg.cpp
+echo #include "stdafx.h" &gt; generated\Release\moc_qsp_msgdlg.cpp
+type generated\Release\tmp_moc_qsp_msgdlg.cpp &gt;&gt; generated\Release\moc_qsp_msgdlg.cpp
+del  generated\Release\tmp_moc_qsp_msgdlg.cpp
 
 </Command>
       <Message>Generating mocs</Message>
@@ -119,7 +123,10 @@ del  generated\Debug\tmp_moc_qsp_inputdlg.cpp
 echo #include "stdafx.h" &gt; generated\Debug\moc_qsp_textbox.cpp
 type generated\Debug\tmp_moc_qsp_textbox.cpp &gt;&gt; generated\Debug\moc_qsp_textbox.cpp
 del  generated\Debug\tmp_moc_qsp_textbox.cpp
-
+%QTDIR%\bin\moc.exe src\qsp_msgdlg.h -o generated\Debug\tmp_moc_qsp_msgdlg.cpp
+echo #include "stdafx.h" &gt; generated\Debug\moc_qsp_msgdlg.cpp
+type generated\Debug\tmp_moc_qsp_msgdlg.cpp &gt;&gt; generated\Debug\moc_qsp_msgdlg.cpp
+del  generated\Debug\tmp_moc_qsp_msgdlg.cpp
 </Command>
     </PreBuildEvent>
     <PreBuildEvent>
@@ -128,13 +135,16 @@ del  generated\Debug\tmp_moc_qsp_textbox.cpp
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="generated\Debug\moc_qsp_inputdlg.cpp" />
+    <ClCompile Include="generated\Debug\moc_qsp_msgdlg.cpp" />
     <ClCompile Include="generated\Debug\moc_qsp_textbox.cpp" />
     <ClCompile Include="generated\Release\moc_qsp_inputdlg.cpp" />
+    <ClCompile Include="generated\Release\moc_qsp_msgdlg.cpp" />
     <ClCompile Include="generated\Release\moc_qsp_textbox.cpp" />
     <ClCompile Include="src\callbacks_gui.cpp" />
     <ClCompile Include="src\main_window.cpp" />
     <ClCompile Include="src\qsp_inputdlg.cpp" />
     <ClCompile Include="src\qsp_listitemdelegate.cpp" />
+    <ClCompile Include="src\qsp_msgdlg.cpp" />
     <ClCompile Include="src\qsp_textbox.cpp" />
     <ClCompile Include="src\qsp_listbox.cpp" />
     <ClCompile Include="src\qsp_imgcanvas.cpp" />
@@ -176,6 +186,7 @@ del  generated\Debug\tmp_moc_qsp_textbox.cpp
     <ClInclude Include="src\qsp_default.h" />
     <ClInclude Include="src\qsp_inputdlg.h" />
     <ClInclude Include="src\qsp_listitemdelegate.h" />
+    <ClInclude Include="src\qsp_msgdlg.h" />
     <ClInclude Include="src\qsp_textbox.h" />
     <ClInclude Include="src\qsp_listbox.h" />
     <ClInclude Include="src\qsp_imgcanvas.h" />

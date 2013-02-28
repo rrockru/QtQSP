@@ -55,6 +55,15 @@
     <ClCompile Include="src\stdafx.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="src\qsp_msgdlg.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\Release\moc_qsp_msgdlg.cpp">
+      <Filter>Generated\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\Debug\moc_qsp_msgdlg.cpp">
+      <Filter>Generated\Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\callbacks_gui.h">
@@ -88,6 +97,9 @@
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="src\qsp_tools.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qsp_msgdlg.h">
       <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>

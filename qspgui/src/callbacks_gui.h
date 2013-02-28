@@ -2,6 +2,7 @@
 #define _QSP_CALLBACKS_H_
 #include "main_window.h"
 #include "qsp_inputdlg.h"
+#include "qsp_msgdlg.h"
 
 namespace Ui
 {
@@ -17,6 +18,7 @@ public:
 	static void DeleteMenu();
 	static void AddMenuItem(const QSP_CHAR *name, const QSP_CHAR *imgPath);
 	static int ShowMenu();
+	static void Msg(const QSP_CHAR *str);
 private:
 	static MainWindow * m_window;
 	static QString m_gamePath;

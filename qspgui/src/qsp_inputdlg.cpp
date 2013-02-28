@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "qsp_inputdlg.h"
 #include "qsp_textbox.h"
+#include "qsp_inputdlg.h"
 
 namespace Ui
 {
