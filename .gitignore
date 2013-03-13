@@ -5,18 +5,19 @@
 #   git config --global core.excludesfile ~/.gitignore_global
 
 # Ignore build files.
-/_debug
-/_release
-/ipch
+/debug
+/release
 
 # Ignore some pjoject files.
-/win32_vs.sdf
-/win32_vs.opensdf
-/win32_vs.suo
-
-# Ignore debug files.
-/qspgui/memwatch.log
+/Makefile
+/qsp/Makefile
+/qsp/Makefile.Debug
+/qsp/Makefile.Release
+/qsp/vc100.pdb
+/qspgui/Makefile
+/qspgui/Makefile.Debug
+/qspgui/Makefile.Release
+/qspgui/vc100.pdb
 
 # Ignore machine-specific files.
-/qspgui/qspgui.vcxproj.user
-/qsp/win32_qsp.vcxproj.user
+/QtQSP.pro.user
