@@ -102,7 +102,7 @@ void QspTextBox::mousePressEvent(QMouseEvent *e)
 	QPoint p = e->pos();
 	if ( !anchorAt( p ).isEmpty() )
 	{
-		emit LinkClicked(anchorAt(p));
+		emit LinkClicked(anchorAt(p), e->globalPos());
 	}
 }
 

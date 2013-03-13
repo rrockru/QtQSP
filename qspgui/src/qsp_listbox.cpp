@@ -25,6 +25,8 @@ void QspListBox::AddItem(const QString& image, const QString& desc)
 	QString text = QString("<TABLE CELLSPACING = \"4\" CELLPADDING = \"0\"><TR><TD WIDTH =\"100%\">%1</TD></TR></TABLE>").arg(desc);
 	item->setText(text);
 	item->setFont(_fontName);
+	if (QFile::exists(image))
+		item->setIcon(QIcon(image));
 	addItem(item);
 }
 

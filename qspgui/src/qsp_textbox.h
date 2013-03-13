@@ -34,7 +34,7 @@ private:
 	int m_posX, m_posY;
 
 signals: 
-	void LinkClicked(QString);
+	void LinkClicked(QString, QPoint);
 };
 
 } // namespace Ui

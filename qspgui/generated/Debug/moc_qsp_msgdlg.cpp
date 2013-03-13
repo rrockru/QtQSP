@@ -1,17 +1,17 @@
 #include "stdafx.h" 
 /****************************************************************************
-** Meta object code from reading C++ file 'qsp_inputdlg.h'
+** Meta object code from reading C++ file 'qsp_msgdlg.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.0.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../src/qsp_inputdlg.h"
+#include "../../src/qsp_msgdlg.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'qsp_inputdlg.h' doesn't include <QObject>."
+#error "The header file 'qsp_msgdlg.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.0.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -19,24 +19,24 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_Ui__QspInputDlg_t {
+struct qt_meta_stringdata_Ui__QSPMsgDlg_t {
     QByteArrayData data[1];
-    char stringdata[17];
+    char stringdata[15];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_Ui__QspInputDlg_t, stringdata) + ofs \
+    offsetof(qt_meta_stringdata_Ui__QSPMsgDlg_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData) \
     )
-static const qt_meta_stringdata_Ui__QspInputDlg_t qt_meta_stringdata_Ui__QspInputDlg = {
+static const qt_meta_stringdata_Ui__QSPMsgDlg_t qt_meta_stringdata_Ui__QSPMsgDlg = {
     {
-QT_MOC_LITERAL(0, 0, 15)
+QT_MOC_LITERAL(0, 0, 13)
     },
-    "Ui::QspInputDlg\0"
+    "Ui::QSPMsgDlg\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Ui__QspInputDlg[] = {
+static const uint qt_meta_data_Ui__QSPMsgDlg[] = {
 
  // content:
        7,       // revision
@@ -52,7 +52,7 @@ static const uint qt_meta_data_Ui__QspInputDlg[] = {
        0        // eod
 };
 
-void Ui::QspInputDlg::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Ui::QSPMsgDlg::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -60,26 +60,26 @@ void Ui::QspInputDlg::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
     Q_UNUSED(_a);
 }
 
-const QMetaObject Ui::QspInputDlg::staticMetaObject = {
-    { &QDialog::staticMetaObject, qt_meta_stringdata_Ui__QspInputDlg.data,
-      qt_meta_data_Ui__QspInputDlg,  qt_static_metacall, 0, 0}
+const QMetaObject Ui::QSPMsgDlg::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_Ui__QSPMsgDlg.data,
+      qt_meta_data_Ui__QSPMsgDlg,  qt_static_metacall, 0, 0}
 };
 
 
-const QMetaObject *Ui::QspInputDlg::metaObject() const
+const QMetaObject *Ui::QSPMsgDlg::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Ui::QspInputDlg::qt_metacast(const char *_clname)
+void *Ui::QSPMsgDlg::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_Ui__QspInputDlg.stringdata))
-        return static_cast<void*>(const_cast< QspInputDlg*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_Ui__QSPMsgDlg.stringdata))
+        return static_cast<void*>(const_cast< QSPMsgDlg*>(this));
     return QDialog::qt_metacast(_clname);
 }
 
-int Ui::QspInputDlg::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Ui::QSPMsgDlg::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)

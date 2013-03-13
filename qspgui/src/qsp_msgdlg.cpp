@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "qsp_textbox.h"
-#include "qsp_inputdlg.h"
+#include "qsp_msgdlg.h"
 
 namespace Ui
 {
-	QspInputDlg::QspInputDlg(QString caption, 
+	QSPMsgDlg::QSPMsgDlg(QString caption, 
 		QString text, 
 		QColor backCol,
 		QColor foreCol,
@@ -25,24 +25,16 @@ namespace Ui
 		setPalette(tmpPal);
 		_desc->setPalette(tmpPal);
 		_desc->setFont(font);
-		_text = new QLineEdit;
-		_text->setPalette(tmpPal);
-		_text->setFont(font);
 
 		QHBoxLayout *buttonBox = new QHBoxLayout;
 		QPushButton *okButton = new QPushButton("OK");
 		okButton->setPalette(tmpPal);
 		okButton->setFont(font);
-		QPushButton *cancelButton = new QPushButton("Cancel");
-		cancelButton->setPalette(tmpPal);
-		cancelButton->setFont(font);
 		buttonBox->addWidget(okButton);
-		buttonBox->addWidget(cancelButton);
+
 		connect(okButton, SIGNAL(clicked()), this, SLOT(accept()));
-		connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
 		box->addWidget(_desc);
-		box->addWidget((QWidget *)_text);
 		setLayout(mainLayout);
 		mainLayout->addLayout(box);
 		mainLayout->addLayout(buttonBox);
@@ -55,9 +47,5 @@ namespace Ui
 
 		setMinimumSize(minWidth, minHeight);
 		setMaximumSize(maxWidth, maxHeight);
-
-		_text->setFocus();
-
 	}
-
-} // namespace Ui
+}

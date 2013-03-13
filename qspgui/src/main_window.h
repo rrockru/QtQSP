@@ -42,6 +42,9 @@ public:
 	void ApplyParams();
 	void LoadSettings();
 	void SaveSettings();
+	void DeleteMenu();
+	void AddMenuItem(QString, QString);
+	int ShowMenu();
 
 private:
 	void CreateMenuBar();
@@ -62,6 +65,7 @@ private:
 	QMenu*			_gameMenu;
 	QMenu*			_settingsMenu;
 	QMenu*			_showHideMenu;
+	QMenu*			_popupMenu;
 	QspTextBox*		_mainDescTextBox;
 	QspListBox*		_objectsListBox;
 	QspListBox*		_actionsListBox;
@@ -74,6 +78,7 @@ private:
 	QColor			_backColor;
 	QColor			_fontColor;
 	QColor			_linkColor;
+	QPoint			_linkClickPos;
 	QRect			_defRect;
 	QString			_lastPath;
 	QString			_fontName;
@@ -82,6 +87,7 @@ private:
 	QString			_panels;
 	bool			_isUseFontSize;
 	int				_fontSize;
+	int				_menuIndex;
 	
 
 private slots:
@@ -98,7 +104,8 @@ private slots:
 	void OnActionChange();
 	void OnObjectChange();
 	void OnActionDblClick();
-	void OnLinkClicked(QString);
+	void OnLinkClicked(QString, QPoint);
+	void OnMenu(QAction *);
 };
 
 } // namespace Ui

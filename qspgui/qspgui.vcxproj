@@ -60,10 +60,31 @@
     <Link>
       <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;qsp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;D:\programming\qsp-svn\players\classic\_release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <PreBuildEvent>
+      <Command>%QTDIR%\bin\moc.exe src\main_window.h -o generated\Release\tmp_moc_main_window.cpp
+echo #include "stdafx.h" &gt; generated\Release\moc_main_window.cpp
+type generated\Release\tmp_moc_main_window.cpp &gt;&gt; generated\Release\moc_main_window.cpp
+del  generated\Release\tmp_moc_main_window.cpp
+%QTDIR%\bin\moc.exe src\qsp_inputdlg.h -o generated\Release\tmp_moc_qsp_inputdlg.cpp
+echo #include "stdafx.h" &gt; generated\Release\moc_qsp_inputdlg.cpp
+type generated\Release\tmp_moc_qsp_inputdlg.cpp &gt;&gt; generated\Release\moc_qsp_inputdlg.cpp
+del  generated\Release\tmp_moc_qsp_inputdlg.cpp
+%QTDIR%\bin\moc.exe src\qsp_textbox.h -o generated\Release\tmp_moc_qsp_textbox.cpp
+echo #include "stdafx.h" &gt; generated\Release\moc_qsp_textbox.cpp
+type generated\Release\tmp_moc_qsp_textbox.cpp &gt;&gt; generated\Release\moc_qsp_textbox.cpp
+del  generated\Release\tmp_moc_qsp_textbox.cpp
+%QTDIR%\bin\moc.exe src\qsp_msgdlg.h -o generated\Release\tmp_moc_qsp_msgdlg.cpp
+echo #include "stdafx.h" &gt; generated\Release\moc_qsp_msgdlg.cpp
+type generated\Release\tmp_moc_qsp_msgdlg.cpp &gt;&gt; generated\Release\moc_qsp_msgdlg.cpp
+del  generated\Release\tmp_moc_qsp_msgdlg.cpp
+
+</Command>
+      <Message>Generating mocs</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -81,7 +102,7 @@
     <Link>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;qsp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\programming\qsp-svn\players\classic\_debug;C:\Program Files %28x86%29\Visual Leak Detector\lib\Win32;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);C:\Program Files %28x86%29\Visual Leak Detector\lib\Win32;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>
@@ -89,16 +110,41 @@
       <Command>
       </Command>
     </CustomBuild>
+    <PreBuildEvent>
+      <Command>%QTDIR%\bin\moc.exe src\main_window.h -o generated\Debug\tmp_moc_main_window.cpp
+echo #include "stdafx.h" &gt; generated\Debug\moc_main_window.cpp
+type generated\Debug\tmp_moc_main_window.cpp &gt;&gt; generated\Debug\moc_main_window.cpp
+del  generated\Debug\tmp_moc_main_window.cpp
+%QTDIR%\bin\moc.exe src\qsp_inputdlg.h -o generated\Debug\tmp_moc_qsp_inputdlg.cpp
+echo #include "stdafx.h" &gt; generated\Debug\moc_qsp_inputdlg.cpp
+type generated\Debug\tmp_moc_qsp_inputdlg.cpp &gt;&gt; generated\Debug\moc_qsp_inputdlg.cpp
+del  generated\Debug\tmp_moc_qsp_inputdlg.cpp
+%QTDIR%\bin\moc.exe src\qsp_textbox.h -o generated\Debug\tmp_moc_qsp_textbox.cpp
+echo #include "stdafx.h" &gt; generated\Debug\moc_qsp_textbox.cpp
+type generated\Debug\tmp_moc_qsp_textbox.cpp &gt;&gt; generated\Debug\moc_qsp_textbox.cpp
+del  generated\Debug\tmp_moc_qsp_textbox.cpp
+%QTDIR%\bin\moc.exe src\qsp_msgdlg.h -o generated\Debug\tmp_moc_qsp_msgdlg.cpp
+echo #include "stdafx.h" &gt; generated\Debug\moc_qsp_msgdlg.cpp
+type generated\Debug\tmp_moc_qsp_msgdlg.cpp &gt;&gt; generated\Debug\moc_qsp_msgdlg.cpp
+del  generated\Debug\tmp_moc_qsp_msgdlg.cpp
+</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Generating mocs</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="generated\Debug\moc_qsp_inputdlg.cpp" />
+    <ClCompile Include="generated\Debug\moc_qsp_msgdlg.cpp" />
     <ClCompile Include="generated\Debug\moc_qsp_textbox.cpp" />
     <ClCompile Include="generated\Release\moc_qsp_inputdlg.cpp" />
+    <ClCompile Include="generated\Release\moc_qsp_msgdlg.cpp" />
     <ClCompile Include="generated\Release\moc_qsp_textbox.cpp" />
     <ClCompile Include="src\callbacks_gui.cpp" />
     <ClCompile Include="src\main_window.cpp" />
     <ClCompile Include="src\qsp_inputdlg.cpp" />
     <ClCompile Include="src\qsp_listitemdelegate.cpp" />
+    <ClCompile Include="src\qsp_msgdlg.cpp" />
     <ClCompile Include="src\qsp_textbox.cpp" />
     <ClCompile Include="src\qsp_listbox.cpp" />
     <ClCompile Include="src\qsp_imgcanvas.cpp" />
@@ -140,6 +186,7 @@
     <ClInclude Include="src\qsp_default.h" />
     <ClInclude Include="src\qsp_inputdlg.h" />
     <ClInclude Include="src\qsp_listitemdelegate.h" />
+    <ClInclude Include="src\qsp_msgdlg.h" />
     <ClInclude Include="src\qsp_textbox.h" />
     <ClInclude Include="src\qsp_listbox.h" />
     <ClInclude Include="src\qsp_imgcanvas.h" />

@@ -21,10 +21,12 @@ MainWindow::MainWindow(QString configFile) :
 
 	_mainDescTextBox = new QspTextBox(this);
 	setCentralWidget(_mainDescTextBox);
-	connect(_mainDescTextBox, SIGNAL(LinkClicked(QString)), this, SLOT(OnLinkClicked(QString)));
+	connect(_mainDescTextBox, SIGNAL(LinkClicked(QString, QPoint)), this, SLOT(OnLinkClicked(QString, QPoint)));
 
 	CreateDockWindows();
 	CreateMenuBar();
+
+	_popupMenu = new QMenu();
 }
 
 MainWindow::~MainWindow()
@@ -215,7 +217,7 @@ void MainWindow::CreateDockWindows()
 	addDockWidget(Qt::BottomDockWidgetArea, _descWidget, Qt::Horizontal);
 	_descTextBox = new QspTextBox(this);
 	_descWidget->setWidget(_descTextBox);
-	connect(_descTextBox, SIGNAL(LinkClicked(QString)), this, SLOT(OnLinkClicked(QString)));
+	connect(_descTextBox, SIGNAL(LinkClicked(QString, QPoint)), this, SLOT(OnLinkClicked(QString, QPoint)));
 
 	// "Input area" widget
 	_inputWidget = new QDockWidget(tr("Input area"), this);
@@ -254,7 +256,21 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::OnAbout()
 {
-
+	QPixmap icon = QPixmap(":/menu/icon");
+	QString version(QString::fromWCharArray(QSPGetVersion()));
+	QString libCompiledDate(QString::fromWCharArray(QSPGetCompiledDateTime()));
+	QString guiCompiledDate(tr(__DATE__) + tr(", ") + tr(__TIME__));
+	QMessageBox dlg(QMessageBox::NoIcon, tr("About..."), tr(""), QMessageBox::Ok);
+	dlg.setIconPixmap(icon);
+	QString text = (tr("<h2>QtQsp</h2>"
+		"<p>Copyright &copy; 2013 rrockSoft."));
+	text += tr("<p>Version: %1<br/>Engine Compiled: %2<br/>GUI Compiled: %3").arg(version, libCompiledDate, guiCompiledDate);
+	text += tr("<p>Site: <a href=\"http://qsp.su\">http://qsp.su</a>");
+	text += tr("<p>Autors:<br/>"
+		"Byte [nporep@mail.ru]<br/>"
+		"rrock.ru [rrock.ru@gmail.com]<br/>");
+	dlg.setText(text);
+	dlg.exec();
 }
 
 void MainWindow::OnOptions()
@@ -264,12 +280,25 @@ void MainWindow::OnOptions()
 
 void MainWindow::OnOpenSavedGame()
 {
-
+	QFileDialog *dlg = new QFileDialog();
+	QString filename = dlg->getOpenFileName(this, NULL, _lastPath, "Saved game files (*.sav)|*.sav");
+	if (!filename.isEmpty())
+	{
+		QFileInfo fi(filename);
+		_lastPath = fi.absoluteFilePath();
+		if (!QSPOpenSavedGame(filename.toStdWString().c_str(), QSP_TRUE))
+			ShowError();
+	}
 }
 
 void MainWindow::OnSaveGame()
 {
-
+	QFileDialog *dlg = new QFileDialog();
+	QString filename = dlg->getSaveFileName(this, NULL, _lastPath, "Saved game files (*.sav)|*.sav");
+	QFileInfo fi(filename);
+	_lastPath = fi.absoluteFilePath();
+	if (!QSPSaveGame(filename.toStdWString().c_str(), QSP_TRUE))
+		ShowError();
 }
 
 void MainWindow::OnToggleCaptions()
@@ -407,7 +436,6 @@ void MainWindow::ApplyFontName(QString fname)
 void MainWindow::ApplyFontSize(int fsize)
 {
 	QFont newFont(_mainDescTextBox->font());
-	qDebug() << fsize;
 	newFont.setPointSize(fsize);
 	ApplyFont(newFont);
 }
@@ -423,7 +451,6 @@ void MainWindow::ApplyFont(QFont newFont)
 
 void MainWindow::ApplyBackColor(QColor col)
 {
-	qDebug() << col.name();
 	QPalette p;
 	p = _mainDescTextBox->palette();
 	p.setColor(QPalette::Base, col);
@@ -452,11 +479,45 @@ void MainWindow::ApplyLinkColor(QColor col)
 
 }
 
-void MainWindow::OnLinkClicked(QString href)
+void MainWindow::OnLinkClicked(QString href, QPoint pos)
 {
+	_linkClickPos = pos;
 	if (href.toUpper().startsWith("EXEC:"))
 	{
 		if (!QSPExecString((const QSP_CHAR *)href.mid(5).toStdWString().c_str(), QSP_TRUE)) ShowError();
+	}
+}
+
+void MainWindow::DeleteMenu()
+{
+	disconnect(_popupMenu,SIGNAL(triggered(QAction*)), this, SLOT(OnMenu(QAction*)));
+	delete _popupMenu;
+	_popupMenu = new QMenu();
+}
+
+void MainWindow::AddMenuItem(QString name, QString imgPath)
+{
+	if (name == tr("-"))
+		_popupMenu->addSeparator();
+	else
+	{
+		_popupMenu->addAction(QIcon(imgPath), name);
+	}
+}
+
+int MainWindow::ShowMenu()
+{
+	connect(_popupMenu,SIGNAL(triggered(QAction*)), this, SLOT(OnMenu(QAction*)));
+	_menuIndex = -1;
+	_popupMenu->exec(_linkClickPos);
+	return _menuIndex;
+}
+
+void MainWindow::OnMenu(QAction *act)
+{
+	QList<QAction*> acts = _popupMenu->actions();
+	if (!acts.empty()) {
+		_menuIndex = acts.indexOf(act);
 	}
 }
 

@@ -1,20 +1,19 @@
+#include "stdafx.h" 
 /****************************************************************************
 ** Meta object code from reading C++ file 'qsp_textbox.h'
 **
-** Created: Fri 11. Jan 03:18:47 2013
-**      by: The Qt Meta Object Compiler version 67 (Qt 5.0.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.0.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "stdafx.h"
 #include "../../src/qsp_textbox.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'qsp_textbox.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.0.0. It"
+#error "This file was generated using the moc from 5.0.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -53,10 +52,10 @@ static const uint qt_meta_data_Ui__QspTextBox[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   19,    2, 0x05,
+       1,    2,   19,    2, 0x05,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::QPoint,    2,    2,
 
        0        // eod
 };
@@ -66,14 +65,14 @@ void Ui::QspTextBox::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     if (_c == QMetaObject::InvokeMetaMethod) {
         QspTextBox *_t = static_cast<QspTextBox *>(_o);
         switch (_id) {
-        case 0: _t->LinkClicked((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 0: _t->LinkClicked((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QPoint(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (QspTextBox::*_t)(QString );
+            typedef void (QspTextBox::*_t)(QString , QPoint );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&QspTextBox::LinkClicked)) {
                 *result = 0;
             }
@@ -118,9 +117,9 @@ int Ui::QspTextBox::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Ui::QspTextBox::LinkClicked(QString _t1)
+void Ui::QspTextBox::LinkClicked(QString _t1, QPoint _t2)
 {
-    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE
