@@ -29,7 +29,7 @@ HEADERS += actions.h \
            regexp.h \
            statements.h \
            text.h \
-           time.h \
+           qsptime.h \
            variables.h \
            variant.h \
            bindings/bindings_config.h \
