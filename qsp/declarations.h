@@ -24,6 +24,7 @@
 #include <string.h>
 #include <wchar.h>
 #include <wctype.h>
+#include "qsptime.h"
 
 /* MEMWATCH */
 
