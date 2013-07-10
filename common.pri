@@ -1,14 +1,13 @@
 OBJECTS_DIR = objs
-CONFIG += build_all
 
-Release:DESTDIR = ../release
-Release:OBJECTS_DIR = ../release/.obj
-Release:MOC_DIR = ../release/.moc
-Release:RCC_DIR = ../release/.rcc
-Release:UI_DIR = ../release/.ui
+release:DESTDIR = ../release
+release:OBJECTS_DIR = ../release/.obj
+release:MOC_DIR = ../release/.moc
+release:RCC_DIR = ../release/.rcc
+release:UI_DIR = ../release/.ui
 
-Debug:DESTDIR = ../debug
-Debug:OBJECTS_DIR = ../debug/.obj
-Debug:MOC_DIR = ../debug/.moc
-Debug:RCC_DIR = ../debug/.rcc
-Debug:UI_DIR = ../debug/.ui
+debug:DESTDIR = ../debug
+debug:OBJECTS_DIR = ../debug/.obj
+debug:MOC_DIR = ../debug/.moc
+debug:RCC_DIR = ../debug/.rcc
+debug:UI_DIR = ../debug/.ui

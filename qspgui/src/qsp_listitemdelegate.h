@@ -1,9 +1,6 @@
 #ifndef _QSP_LISTITEMDELEGATE_H_
 #define _QSP_LISTITEMDELEGATE_H_
 
-#include <QtWidgets\QStyledItemDelegate>
-#include <QtGui\QTextDocument>
-
 namespace Ui
 {
 	class QspListItemDelegate : public QStyledItemDelegate

@@ -1,5 +1,5 @@
 //#include <vld.h> // Visual Leak Detector
-#include <QtWidgets\QtWidgets>
-#include <QtGui\QtGui>
+//#include <QtWidgets> // uncomment for QT5
+#include <QtGui>
 
 #include "qsp_default.h"
