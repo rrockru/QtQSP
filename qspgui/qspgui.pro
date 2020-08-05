@@ -2,8 +2,7 @@
     error("Couldn't find the common.pri file!")
 }
 
-
-greatherThan(QT_MAJOR_VERSION, 4) {
+greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
 }
 
